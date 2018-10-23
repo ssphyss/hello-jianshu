@@ -1,15 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import  "./../../sass/all.scss";
 
 class Top extends React.Component{
-    constructor(props) {
-        super(props);
-		this.state = {
-			focused: false
-		}
-		this.handleInputFocus = this.handleInputFocus.bind(this);
-		this.handleInputBlur = this.handleInputBlur.bind(this);
-	}
+    // constructor(props) {
+        // super(props);
+        // 改寫,改成寫在reducer
+		// this.state = {
+		// 	focused: false
+		// }
+		// this.handleInputFocus = this.handleInputFocus.bind(this);
+		// this.handleInputBlur = this.handleInputBlur.bind(this);
+	// }
     render(){
         return(
             <div className="top">
@@ -41,8 +43,8 @@ class Top extends React.Component{
                                 className="search__input" 
                                 placeholder="搜尋" 
                                 // className={this.state.focused ? 'focused': ''}
-								onFocus={this.handleInputFocus}
-								onBlur={this.handleInputBlur}
+								onFocus={this.props.handleInputFocus}
+								onBlur={this.props.handleInputBlur}
                             />	
                             <button className="search__button">  
                                 <i className="iconfont icon-searchamagnifyingglass"></i>
@@ -77,18 +79,42 @@ class Top extends React.Component{
         )
     }
     handleInputFocus() {
-        console.log(123);
-		this.setState({
-			focused: true
-		})
+		// this.setState({
+		// 	focused: true
+		// })
 	}
 
 	handleInputBlur() {
-        console.log(456);
-		this.setState({
-			focused: false
-		})
+		// this.setState({
+		// 	focused: false
+		// })
+	}
+}
+// 把倉庫裡的focused( 即state.focused)映射到組件的props的focused
+const mapStateToProps = (state) => {
+	return {
+		focused: state.focused
 	}
 }
 
-export default Top;
+const mapDispathToProps = (dispatch) => {
+	return {
+		handleInputFocus() {
+            console.log('123')
+			const action = {
+				type: 'search_focus'
+			};
+			dispatch(action);
+		},
+		handleInputBlur() {
+            console.log('456')
+			const action = {
+				type: 'search_blur'
+			};
+			dispatch(action);
+		}
+	}
+}
+// export default Top;
+// export default connect( )(Top);
+export default connect(mapStateToProps, mapDispathToProps)(Top);
