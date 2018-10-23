@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 // import * as actionCreators from './store/actionCreators';
 import { actionCreators } from './store';
 import  "./../../sass/all.scss";
+import  "./index.scss";
 
 class Top extends React.Component{
     // constructor(props) {

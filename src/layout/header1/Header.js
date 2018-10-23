@@ -11,6 +11,11 @@ import {
 	NavItem,
 	SearchWrapper,
 	NavSearch,
+	SearchInfo,
+	SearchInfoTitle,
+	SearchInfoSwitch,
+	SearchInfoList,
+	SearchInfoItem,
 	Addition,
 	Button
 } from './style'
@@ -30,8 +35,14 @@ class Header extends React.Component{
             <HeaderWrapper>
                 <Logo/>
                 <Nav>
-					<NavItem className='left active'>首頁</NavItem>
-					<NavItem className='left'>下載App</NavItem>
+					<NavItem className='left active'>
+						<i className="iconfont">&#xe71b;</i>
+						首頁
+					</NavItem>
+					<NavItem className='left'>
+						<i className="iconfont">&#xe62a;</i>
+						下載App
+					</NavItem>
 					<NavItem className='right'>登陸</NavItem>
 					<NavItem className='right'>
 						<i className="iconfont">&#xe636;</i>
@@ -49,14 +60,32 @@ class Header extends React.Component{
 								onBlur={this.props.handleInputBlur}
 							></NavSearch>
 						</CSSTransition>
-                        <i className={this.props.focused ? 'focused iconfont': 'iconfont'}>
-							&#xe614;
-						</i>
+						<i className={this.props.focused ? 'focused iconfont': 'iconfont'}> &#xe625;</i>
+						<SearchInfo>
+							<SearchInfoTitle>熱門搜索
+								
+							</SearchInfoTitle>
+							<SearchInfoSwitch>	
+									<i className="iconfont">&#xe6dd;</i>							
+									換一批								
+								</SearchInfoSwitch>
+							<SearchInfoList>
+								<SearchInfoItem>行距杯2018徵文</SearchInfoItem>
+								<SearchInfoItem>區塊練</SearchInfoItem>
+								<SearchInfoItem>小程序</SearchInfoItem>
+								<SearchInfoItem>vue</SearchInfoItem>
+								<SearchInfoItem>畢業</SearchInfoItem>
+								<SearchInfoItem>PHP</SearchInfoItem>
+								<SearchInfoItem>flutetr</SearchInfoItem>
+								<SearchInfoItem>理財</SearchInfoItem>
+								<SearchInfoItem>美食</SearchInfoItem>
+							</SearchInfoList>
+						</SearchInfo>
 					</SearchWrapper>
 				</Nav>
                 <Addition>
 					<Button className='writting'>
-						<i className="iconfont">&#xe615;</i>
+						<i className="iconfont">&#xe728;</i>
 						寫文章
 					</Button>
 					<Button className='reg'>注册</Button>

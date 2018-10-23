@@ -55,7 +55,7 @@ export const SearchWrapper = styled.div`
 		width: 30px;
 		line-height: 30px;
 		border-radius: 15px;
-		text=align: center;
+		text-align: center;
 		&.focused {
 			background: #777;
 			color: #fff;
@@ -109,6 +109,56 @@ export const NavSearch = styled.input.attrs({
 	&.slide-exit-active {
 		width: 160px;
 	}
+`;
+
+// 熱門搜 尋框
+export const SearchInfo = styled.div`
+	position: absolute;
+	left: 0;
+	top: 56px;
+	width: 240px;
+	padding: 20px;
+	background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,.2);
+    border-bottom: 1px solid #f0f0f0;
+`;
+
+// 熱門搜尋 標題
+export const SearchInfoTitle = styled.span`
+	margin-bottom: 15px;
+	line-height:20px;
+	font-size: 14px;
+	color: #969696;	
+`;
+
+// 熱門搜尋 換一批
+export const SearchInfoSwitch = styled.span`
+	position: relative;
+	float: right;
+	font-size: 13px;
+	.iconfont {
+		position: absolute;	
+		top: 50%;
+		left: -70%;
+		right: -100%;
+		transform: translateY(-50%);
+		height: 30px;
+	}
+`;
+
+export const SearchInfoList = styled.a`
+
+`;
+
+export const SearchInfoItem = styled.a`
+	display: inline-block;	
+	margin: 10px 5px 0px 0px;
+	padding: 0 5px;
+	line-height: 20px;
+	font-size: 13px;	
+	border: 1px solid #dcdcdc;
+	border-radius: 3px;
+	color: #666;
 `;
 
 export const Addition = styled.div`
