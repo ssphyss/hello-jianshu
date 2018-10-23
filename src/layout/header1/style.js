@@ -146,11 +146,11 @@ export const SearchInfoSwitch = styled.span`
 	}
 `;
 
-export const SearchInfoList = styled.a`
+export const SearchInfoList = styled.span`
 
 `;
 
-export const SearchInfoItem = styled.a`
+export const SearchInfoItem = styled.span`
 	display: inline-block;	
 	margin: 10px 5px 0px 0px;
 	padding: 0 5px;

@@ -20,7 +20,7 @@ export const TopicItem = styled.div`
     border-radius: 4px;
     .topic-pic {
         margin-right: 10px;        
-        display: blick;
+        display: block;
         float: left;
         width: 32px;
         height: 32px;  

@@ -20,7 +20,32 @@ import {
 	Button
 } from './style'
 ;
-
+// const getListArea = (show) => {
+// 	if(show){
+// 		return (
+// 				<SearchInfo>
+// 					<SearchInfoTitle>熱門搜索</SearchInfoTitle>
+// 					<SearchInfoSwitch>	
+// 						<i className="iconfont">&#xe6dd;</i>							
+// 						換一批								
+// 					</SearchInfoSwitch>
+// 					<SearchInfoList>
+// 						<SearchInfoItem>行距杯2018徵文</SearchInfoItem>
+// 						<SearchInfoItem>區塊練</SearchInfoItem>
+// 						<SearchInfoItem>小程序</SearchInfoItem>
+// 						<SearchInfoItem>vue</SearchInfoItem>
+// 						<SearchInfoItem>畢業</SearchInfoItem>
+// 						<SearchInfoItem>PHP</SearchInfoItem>
+// 						<SearchInfoItem>flutetr</SearchInfoItem>
+// 						<SearchInfoItem>理財</SearchInfoItem>
+// 						<SearchInfoItem>美食</SearchInfoItem>
+// 					</SearchInfoList>
+// 				</SearchInfo>
+// 		)
+// 	} else {
+// 		return null;
+// 	}
+// }
 class Header extends React.Component{
     // constructor(props) {
 		// super(props);
@@ -30,6 +55,37 @@ class Header extends React.Component{
 		// this.handleInputFocus = this.handleInputFocus.bind(this);
 		// this.handleInputBlur = this.handleInputBlur.bind(this);
 	// }
+	getListArea () {
+		if(this.props.focused){
+			return (
+					<SearchInfo>
+						<SearchInfoTitle>熱門搜索</SearchInfoTitle>
+						<SearchInfoSwitch>	
+							<i className="iconfont">&#xe6dd;</i>							
+							換一批								
+						</SearchInfoSwitch>
+						<SearchInfoList>
+							{/* <SearchInfoItem>行距杯2018徵文</SearchInfoItem>
+							<SearchInfoItem>區塊練</SearchInfoItem>
+							<SearchInfoItem>小程序</SearchInfoItem>
+							<SearchInfoItem>vue</SearchInfoItem>
+							<SearchInfoItem>畢業</SearchInfoItem>
+							<SearchInfoItem>PHP</SearchInfoItem>
+							<SearchInfoItem>flutetr</SearchInfoItem>
+							<SearchInfoItem>理財</SearchInfoItem>
+							<SearchInfoItem>美食</SearchInfoItem> */}
+							{
+								this.props.list.map((item)=>{
+									return <SearchInfoItem key={item}>{item}</SearchInfoItem>
+								})
+							}
+						</SearchInfoList>
+					</SearchInfo>
+			)
+		} else {
+			return null;
+		}
+	}
     render(){
         return(
             <HeaderWrapper>
@@ -61,14 +117,12 @@ class Header extends React.Component{
 							></NavSearch>
 						</CSSTransition>
 						<i className={this.props.focused ? 'focused iconfont': 'iconfont'}> &#xe625;</i>
-						<SearchInfo>
-							<SearchInfoTitle>熱門搜索
-								
-							</SearchInfoTitle>
+						{/* <SearchInfo>
+							<SearchInfoTitle>熱門搜索</SearchInfoTitle>
 							<SearchInfoSwitch>	
-									<i className="iconfont">&#xe6dd;</i>							
-									換一批								
-								</SearchInfoSwitch>
+								<i className="iconfont">&#xe6dd;</i>							
+								換一批								
+							</SearchInfoSwitch>
 							<SearchInfoList>
 								<SearchInfoItem>行距杯2018徵文</SearchInfoItem>
 								<SearchInfoItem>區塊練</SearchInfoItem>
@@ -80,7 +134,9 @@ class Header extends React.Component{
 								<SearchInfoItem>理財</SearchInfoItem>
 								<SearchInfoItem>美食</SearchInfoItem>
 							</SearchInfoList>
-						</SearchInfo>
+						</SearchInfo> */}
+						{/* { this.getListArea(this.props.focused)} */}
+						{ this.getListArea()}
 					</SearchWrapper>
 				</Nav>
                 <Addition>
@@ -114,7 +170,8 @@ const mapStateToProps = (state) => {
 		// 改成調用immutable數據
 		// focused: state.header.get('focused')
 		// focused: state.get('header').get('focused')
-		focused: state.getIn(['header','focused'])
+		focused: state.getIn(['header','focused']),
+		list: state.getIn(['header','list'])
 	}
 }
 
@@ -126,6 +183,7 @@ const mapDispathToProps = (dispatch) => {
 			// 	type: 'search_focus'
 			// };
 			// dispatch(action);
+			dispatch(actionCreators.getList());
 			dispatch(actionCreators.searchFocus());
 		},
 		handleInputBlur() {

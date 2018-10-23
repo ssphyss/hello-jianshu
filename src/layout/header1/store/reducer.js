@@ -2,11 +2,10 @@ import * as constants from './constants';
 import { fromJS } from 'immutable';
 
 // 把數據對象轉化成immutable對象
-const defaultState = fromJS(
-	{
-		focused: false
-	}
-)
+const defaultState = fromJS({
+	focused: false,
+	list: []
+})
 
 // const defaultState = {
 //     focused: false
@@ -27,6 +26,12 @@ export default (state = defaultState, action) => {
 		// return {
 		// 	focused: false
 		// }
+	}
+	if (action.type === constants.CHANGE_LIST) {
+		return state.set('list', action.data)
+		// console.log('有連了嗎?');
+		// console.log(action)
+		// return state;
 	}
 	return state;
 }

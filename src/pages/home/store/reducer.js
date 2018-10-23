@@ -1,11 +1,11 @@
-import * as constants from './constants';
+// import * as constants from './constants';
 import { fromJS } from 'immutable';
 import topic01 from './../../../assets/topic01.jpg';
-import topic02 from './../../../assets/topic02.jpg';
-import topic03 from './../../../assets/topic03.jpg';
-import topic04 from './../../../assets/topic04.jpg';
-import topic05 from './../../../assets/topic05.jpg';
-import topic06 from './../../../assets/topic06.jpg';
+// import topic02 from './../../../assets/topic02.jpg';
+// import topic03 from './../../../assets/topic03.jpg';
+// import topic04 from './../../../assets/topic04.jpg';
+// import topic05 from './../../../assets/topic05.jpg';
+// import topic06 from './../../../assets/topic06.jpg';
 
 // 把數據對象轉化成immutable對象
 const defaultState = fromJS({
