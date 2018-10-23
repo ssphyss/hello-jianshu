@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000"> 
-    <title>SASS - Hello jianshu</title>
-    <link rel="stylesheet" href="css/all.css">
-  </head>
-  <body>
-    <div class="h1">1234500</div>
-<!--     <div id="root"></div> -->
-  </body>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="./favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="theme-color" content="#000000"> 
+	<title>SASS - 簡書 - 創作你的創作</title>
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="./images/iconfont/iconfont.css">
+</head>
+<body>
+	<div class="top">
+		<div class="container">
+			<div class="top__logo-box">
+				<img src="./images/logo.png" alt="">
+			</div>
+			<div class="top__navigation-box clearfix">
+				<nav class="navigation navigation--primary">
+					<ul class="navigation__list">
+						<li class="navigation__item">
+							<a href="#" class="navigation__link active">
+								<i class="iconfont icon-compass"></i>    
+								首頁
+							</a>
+						</li>
+						<li class="navigation__item">
+							<a href="#" class="navigation__link">
+								<i class="iconfont icon-xiazai"></i>
+								下載 App
+							</a>
+						</li>							
+					</ul>					
+				</nav>
+				<form action="" class="search">
+					<input type="text" class="search__input" placeholder="搜尋">	
+					<button class="search__button">
+						<i class="iconfont icon-searchamagnifyingglass"></i>
+					</button>
+				</form>
+				<nav class="navigation navigation--user">
+					<ul class="navigation__list">
+						<li class="navigation__item">
+							<!-- <a href="#" class="navigation__link">Aa</a> -->
+							<i class="iconfont icon-Aa"></i>
+						</li>
+						<li class="navigation__item">
+							<a href="#" class="navigation__link btn btn__login">登陸</a>
+						</li>
+						<li class="navigation__item">
+							<a href="#" class="navigation__link btn btn--outline btn--pill btn--primary">註冊</a>
+						</li>		
+						<li class="navigation__item">
+							<a href="#" class="navigation__link btn btn--pill btn--primary">
+								<!-- <i className="iconfont">&#xe728;</i> -->
+								<i class="iconfont icon-feather"></i>
+								寫文章
+							</a>
+						</li>					
+					</ul>
+				</nav>
+			</div>	
+		</div>	
+	</div>
+	<div class="wrapper">
+		<div class="container">
+
+		</div>	
+	</div>
+
+</body>

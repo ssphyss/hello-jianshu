@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Logo = styled.a.attrs({
-	href: '/'
+	href: '/'  //連接首頁,根路徑
 })`
 	position: absolute;
 	top: 0;
@@ -48,6 +48,19 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
 	position: relative;
 	float: left;
+	.iconfont {
+		position: absolute;
+		right: 5px;
+		bottom: 5px;
+		width: 30px;
+		line-height: 30px;
+		border-radius: 15px;
+		text=align: center;
+		&.focused {
+			background: #777;
+			color: #fff;
+		}
+	}
 	.zoom {
 		position: absolute;
 		right: 5px;
