@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import * as actionCreators from './store/actionCreators';
+import { actionCreators } from './store';
 import  "./../../sass/all.scss";
 
 class Top extends React.Component{
@@ -101,17 +103,19 @@ const mapDispathToProps = (dispatch) => {
 	return {
 		handleInputFocus() {
             console.log('123')
-			const action = {
-				type: 'search_focus'
-			};
-			dispatch(action);
+			// const action = {
+			// 	type: 'search_focus'
+			// };
+            // dispatch(action);
+            dispatch(actionCreators.searchFocus());
 		},
 		handleInputBlur() {
             console.log('456')
-			const action = {
-				type: 'search_blur'
-			};
-			dispatch(action);
+			// const action = {
+			// 	type: 'search_blur'
+			// };
+            // dispatch(action);
+            dispatch(actionCreators.searchBlur());
 		}
 	}
 }
