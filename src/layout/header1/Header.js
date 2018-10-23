@@ -78,19 +78,22 @@ class Header extends React.Component{
 }
 const mapStateToProps = (state) => {
 	return {
-		focused: state.focused
+		// focused: state.focused
+		focused: state.header.focused
 	}
 }
 
 const mapDispathToProps = (dispatch) => {
 	return {
 		handleInputFocus() {
+			console.log('123')
 			const action = {
 				type: 'search_focus'
 			};
 			dispatch(action);
 		},
 		handleInputBlur() {
+			console.log('456')
 			const action = {
 				type: 'search_blur'
 			};
