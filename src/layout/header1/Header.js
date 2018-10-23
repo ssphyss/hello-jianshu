@@ -83,7 +83,9 @@ const mapStateToProps = (state) => {
 		// focused: state.focused
 		// focused: state.header.focused
 		// 改成調用immutable數據
-		focused: state.header.get('focused')
+		// focused: state.header.get('focused')
+		// focused: state.get('header').get('focused')
+		focused: state.getIn(['header','focused'])
 	}
 }
 

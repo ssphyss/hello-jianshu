@@ -95,7 +95,12 @@ class Top extends React.Component{
 // 把倉庫裡的focused( 即state.focused)映射到組件的props的focused
 const mapStateToProps = (state) => {
 	return {
-		focused: state.header.focused
+		// focused: state.focused
+		// focused: state.header.focused
+		// 改成調用immutable數據
+        // focused: state.header.get('focused')
+        // focused: state.get('header').get('focused')
+        focused: state.getIn(['header','focused'])
 	}
 }
 

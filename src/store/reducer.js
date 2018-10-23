@@ -1,6 +1,9 @@
-import { combineReducers } from  'redux';
-// import headerReducer from './../layout/header1/store/reducer';
+// import { combineReducers } from  'redux';
+// 引用redux-immutable
+import { combineReducers } from  'redux-immutable';
+
 import { reducer as headerReducer } from './../layout/header1/store';
+// import headerReducer from './../layout/header1/store/reducer';
 
 const reducer = combineReducers ({
 	header : headerReducer
