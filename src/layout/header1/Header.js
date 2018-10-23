@@ -81,7 +81,9 @@ class Header extends React.Component{
 const mapStateToProps = (state) => {
 	return {
 		// focused: state.focused
-		focused: state.header.focused
+		// focused: state.header.focused
+		// 改成調用immutable數據
+		focused: state.header.get('focused')
 	}
 }
 
