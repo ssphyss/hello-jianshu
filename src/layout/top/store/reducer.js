@@ -15,6 +15,10 @@ export default (state = defaultState, action) => {
 			return state.set('focused', false);
 		case constants.CHANGE_LIST :
 			return state.set('list', action.data);
+		case constants.MOUSE_ENTER :
+			return state.set('mouseIn', true);	
+		case constants.MOUSE_LEAVE :
+			return state.set('mouseIn', false);
 		default :
 			return state;
 	}

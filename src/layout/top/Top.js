@@ -16,10 +16,14 @@ class Top extends React.Component{
 		// this.handleInputBlur = this.handleInputBlur.bind(this);
 	// }
     getListArea () {
-		// const { focused, list } = this.props;
-		if(this.props.focused){
+		// const { focused, list, handleMouseEnter, handleMouseLeave } = this.props;
+        if(this.props.focused || this.props.mouseIn){
 			return (
-                <div className='search__info'>
+                <div 
+                onMouseEnter = { this.props.handleMouseEnter }
+                onMouseLeave = { this.props.handleMouseLeave }
+                className='search__info'
+                >
                     <div className='search__title-box clearfix'>
                         <a className='search__text left' href='https://www.google.com.tw/'>熱門搜索</a>  
                         <a className='search__text right' href='https://www.google.com.tw/'>
@@ -204,7 +208,15 @@ const mapDispathToProps = (dispatch) => {
 			// };
             // dispatch(action);
             dispatch(actionCreators.searchBlur());
-		}
+		},
+        handleMouseEnter(){
+            console.log('handleMouseEnter');
+            dispatch(actionCreators.mouseEnter());
+        },
+        handleMouseLeave(){
+            console.log('handleMouseLeave');
+            dispatch(actionCreators.mouseLeave());
+        }
 	}
 }
 // export default Top;
