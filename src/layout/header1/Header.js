@@ -90,6 +90,7 @@ class Header extends React.Component{
 	}
     render(){
 		// const { focused, handleInputFocus, handleInputBlur } = this.props;
+		const { list } = this.props;
         return(
             <HeaderWrapper>
                 <Logo />
@@ -115,7 +116,8 @@ class Header extends React.Component{
 						>
 							<NavSearch
 								className={this.props.focused ? 'focused': ''}
-								onFocus={this.props.handleInputFocus}
+								// onFocus={this.props.handleInputFocus}
+								onFocus={() => this.props.handleInputFocus(list)}
 								onBlur={this.props.handleInputBlur}
 							></NavSearch>
 						</CSSTransition>
@@ -157,7 +159,7 @@ const mapStateToProps = (state) => {
 
 const mapDispathToProps = (dispatch) => {
 	return {
-		handleInputFocus() {
+		handleInputFocus(list) {
 			console.log('123')			
 			
 			// const action = actionCreators.getList();
@@ -167,7 +169,15 @@ const mapDispathToProps = (dispatch) => {
 			// 異步請求獲取搜尋清單的數據
 			// const action = actionCreators.searchFocus();
 			// dispatch(action)
-			dispatch(actionCreators.getList());
+			// dispatch(actionCreators.getList());
+
+			// 改寫
+			// 當數據是0的時候,才要發送Ajax請求
+			console.log('list：', list);
+			// if (list.size === 0) {
+			// 	dispatch(actionCreators.getList());
+			// }
+			(list.size === 0) && dispatch(actionCreators.getList());
 		},
 		handleInputBlur() {
 			console.log('456')
