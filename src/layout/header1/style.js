@@ -169,6 +169,8 @@ export const Addition = styled.div`
 `;
 
 export const Button = styled.div`
+	// background: ${props => props.primary ? 'white' : 'yellow'};
+	// color: ${props => props.color ? 'white': 'blue'}
 	float: right;
 	margin-top: 9px;
 	margin-right: 20px;
@@ -176,7 +178,8 @@ export const Button = styled.div`
 	line-height: 38px;
 	border-radius: 19px;
 	border: 1px solid #ec6149;
-	font-siz: 14px;
+	// font-size: ${props => props.num}
+	font-size: 14px;
 	&.reg {
 		color: #ec6149;
 	}

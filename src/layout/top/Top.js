@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { actionCreators } from './store';   // 讓store統一管理其他檔
 // import * as actionCreators from './store/actionCreators';
-import { actionCreators } from './store';
 import  "./../../sass/all.scss";
 import  "./index.scss";
 
@@ -15,6 +15,49 @@ class Top extends React.Component{
 		// this.handleInputFocus = this.handleInputFocus.bind(this);
 		// this.handleInputBlur = this.handleInputBlur.bind(this);
 	// }
+    getListArea () {
+		// const { focused, list } = this.props;
+		if(this.props.focused){
+			return (
+                <div className='search__info'>
+                    <div className='search__title-box clearfix'>
+                        <a className='search__text left' href='https://www.google.com.tw/'>熱門搜索</a>  
+                        <a className='search__text right' href='https://www.google.com.tw/'>
+                            <i className="iconfont">&#xe6dd;</i>
+                            換一批
+                        </a>  
+                    </div>                             
+                    <ul>
+                        {/* <li className='search__item'>
+                            <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                        </li>
+                        <li className='search__item'>
+                            <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                        </li>
+                        <li className='search__item'>
+                            <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                        </li>
+                        <li className='search__item'>
+                            <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                        </li> */}
+                        {/* <li className='search__item'>{this.props.list}</li> */}
+                        {
+                            this.props.list.map((item) => {
+                                return (
+                                    <li className='search__item' key={item}>
+                                        <a href="https://www.google.com.tw/" className="search__link">{item}</a>
+                                    </li>
+                                )
+                            })
+                        }
+                        
+                    </ul>             
+                </div> 
+			)
+		} else {
+			return null;
+		}
+	}
     render(){
         return(
             <div className="top">
@@ -40,7 +83,9 @@ class Top extends React.Component{
                                     </a>
                                 </li>							
                             </ul>					
-                        </nav>
+                        </nav>      
+                        <div>
+                        </div>             
                         <form action="" className="search">
                             <input type="text" 
                                 className="search__input" 
@@ -53,6 +98,41 @@ class Top extends React.Component{
                                 <i className="iconfont icon-searchamagnifyingglass"></i>
                                 {/* <i className="iconfont">&#xe625;</i> */}
                             </button>
+                            {/* <div className='search__info'>
+                                <div className='search__title-box clearfix'>
+                                    <a className='search__text left' href='https://www.google.com.tw/'>熱門搜索</a>  
+                                    <a className='search__text right' href='https://www.google.com.tw/'>
+                                        <i className="iconfont">&#xe6dd;</i>
+                                        換一批
+                                    </a>  
+                                </div>                             
+                                <ul>
+                                    <li className='search__item'>
+                                        <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                                    </li>
+                                    <li className='search__item'>
+                                        <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                                    </li>
+                                    <li className='search__item'>
+                                        <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                                    </li>
+                                    <li className='search__item'>
+                                        <a href="https://www.google.com.tw/" className="search__link">區塊鏈</a>
+                                    </li>
+                                    <li className='search__item'>{this.props.list}</li>
+                                    {
+                                        this.props.list.map((item) => {
+                                            return (
+                                                <li className='search__item' key={item}>
+                                                    <a href="https://www.google.com.tw/" className="search__link">{item}</a>
+                                                </li>
+                                            )
+                                        })
+                                    }
+                                    
+                               </ul>             
+                            </div>  */}
+                            { this.getListArea()}
                         </form>
                         <nav className="navigation navigation--user">
                             <ul className="navigation__list">
@@ -81,27 +161,28 @@ class Top extends React.Component{
             </div>
         )
     }
-    handleInputFocus() {
+    // handleInputFocus() {
 		// this.setState({
 		// 	focused: true
 		// })
-	}
+	// }
 
-	handleInputBlur() {
+	// handleInputBlur() {
 		// this.setState({
 		// 	focused: false
 		// })
-	}
+	// }
 }
 // 把倉庫裡的focused( 即state.focused)映射到組件的props的focused
 const mapStateToProps = (state) => {
 	return {
 		// focused: state.focused
-		// focused: state.header.focused
+		// focused: state.top.focused
 		// 改成調用immutable數據
-        // focused: state.header.get('focused')
-        // focused: state.get('header').get('focused')
-        focused: state.getIn(['header','focused'])
+        // focused: state.top.get('focused')
+        // focused: state.get('top').get('focused')
+        focused: state.getIn(['top','focused']),
+        list: state.getIn(['top','list'])
 	}
 }
 
@@ -113,6 +194,7 @@ const mapDispathToProps = (dispatch) => {
 			// 	type: 'search_focus'
 			// };
             // dispatch(action);
+            dispatch(actionCreators.getList());
             dispatch(actionCreators.searchFocus());
 		},
 		handleInputBlur() {

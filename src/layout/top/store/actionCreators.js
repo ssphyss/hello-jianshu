@@ -1,10 +1,31 @@
 import * as constants from './constants';
-// import { 
-//     SEARCH_FOCUS,
-//     SEARCH_BLUR
-// } from './actionTypes';
+import { fromJS } from 'immutable';
+import axios from 'axios';
 
-// 封裝action
+const changeList = (data) => ({
+    type: constants.CHANGE_LIST,
+    data: fromJS(data)
+})
+
+export const getList = () => {
+    return (dispatch) => {
+        console.log('AAA');
+        axios.get('https://easy-mock.com/mock/5bc846bd4ff7d608864c06b0/jianshuApi/searchMenu')
+		.then((res)=>{
+			console.log('Ajax輸出：',res.data);
+            const data = res.data;
+            // const action = {
+            //     type: 'change_list',
+            //     data: data.data
+            // }
+            // dispatch(action);
+            // const action = changeList(data.data);
+            dispatch(changeList(data.data));
+		})
+		.catch(()=>{alert('err')})
+    }
+}
+
 export const searchFocus = () => ({
     type: constants.SEARCH_FOCUS
 })
@@ -12,5 +33,3 @@ export const searchFocus = () => ({
 export const searchBlur = () => ({
     type: constants.SEARCH_BLUR
 })
-
-
