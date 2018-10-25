@@ -21,12 +21,48 @@ import {
 
 class Header extends React.Component{
 	getListArea () {
-		// const { focused, list } = this.props;
-		if(this.props.focused){
+		// const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+		const { list, page, totalPage } = this.props;
+		const newList = list.toJS();  // 把Iimmutable數組轉成普通JS數組
+		const pageList = [];
+
+		// newList = 47筆
+		// pageList = 10筆 要渲染的
+
+		// if (newList.length){
+		// 	for (let i = (page - 1) * 10; i < page * 10; i++) {
+		// 		// console.log('這是i',i,newList[i]);
+		// 		if(typeof newList[i] != 'undefined'){
+		// 			pageList.push(
+		// 				<SearchInfoItem key={newList[i]}>
+		// 					{newList[i]}
+		// 				</SearchInfoItem>	
+		// 			)
+		// 		}
+		// 	}
+		// }
+
+		if (newList.length) {
+			for (let i = (page - 1) * 10; i < page * 10 && i < newList.length; i++) {
+				console.log('這是i',i,newList[i]);
+				pageList.push(
+					<SearchInfoItem key={newList[i]}>
+						{newList[i]}
+					</SearchInfoItem>
+				)
+			}
+		}
+		if(this.props.focused || this.props.mouseIn){
 			return (
-					<SearchInfo>
+					<SearchInfo
+						onMouseEnter = { this.props.handleMouseEnter }
+						onMouseLeave = { this.props.handleMouseLeave }
+					>
 						<SearchInfoTitle>熱門搜索</SearchInfoTitle>
-						<SearchInfoSwitch>	
+						<SearchInfoSwitch
+							// onClick = {this.props.handleChangePage}
+							onClick = {() => this.props.handleChangePage(page, totalPage)}
+						>	
 							<i className="iconfont">&#xe6dd;</i>							
 							換一批								
 						</SearchInfoSwitch>
@@ -35,11 +71,12 @@ class Header extends React.Component{
 							<SearchInfoItem>區塊練</SearchInfoItem>
 							<SearchInfoItem>小程序</SearchInfoItem>
 							<SearchInfoItem>美食</SearchInfoItem> */}
-							{
+							{/* {
 								this.props.list.map((item)=>{
 									return <SearchInfoItem key={item}>{item}</SearchInfoItem>
 								})
-							}
+							} */}
+							{pageList}
 						</SearchInfoList>
 					</SearchInfo>
 			)
@@ -107,7 +144,10 @@ const mapStateToProps = (state) => {
 		// focused: state.get('header').get('focused')
 		// 換一個immutable的方法,接收數組,表示取得header下的focused
 		focused: state.getIn(['header','focused']),
-		list: state.getIn(['header','list'])
+		list: state.getIn(['header','list']),
+		page: state.getIn(['header','page']),
+		totalPage: state.getIn(['header','totalPage']),
+		mouseIn: state.getIn(['header','mouseIn'])
 	}
 }
 
@@ -120,7 +160,7 @@ const mapDispathToProps = (dispatch) => {
 			// dispatch(action)
 			dispatch(actionCreators.searchFocus());
 			
-			// 異步請求搜尋清單
+			// 異步請求獲取搜尋清單的數據
 			// const action = actionCreators.searchFocus();
 			// dispatch(action)
 			dispatch(actionCreators.getList());
@@ -128,6 +168,21 @@ const mapDispathToProps = (dispatch) => {
 		handleInputBlur() {
 			console.log('456')
 			dispatch(actionCreators.searchBlur());
+		},
+		handleMouseEnter(){
+			dispatch(actionCreators.mouseEnter());
+		},
+		handleMouseLeave(){
+			dispatch(actionCreators.mouseLeave());
+		},
+		handleChangePage(page, totalPage){
+			console.log('totalPage', totalPage)
+			if (page < totalPage) {
+				dispatch(actionCreators.changePage(page + 1));
+			}else {
+				dispatch(actionCreators.changePage(1));
+			}
+			
 		}
 	}
 }

@@ -147,7 +147,7 @@ export const SearchInfoSwitch = styled.span`
 `;
 
 export const SearchInfoList = styled.span`
-
+	display: block;	
 `;
 
 export const SearchInfoItem = styled.span`
