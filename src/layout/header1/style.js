@@ -132,17 +132,20 @@ export const SearchInfoTitle = styled.span`
 `;
 
 // 熱門搜尋 換一批
-export const SearchInfoSwitch = styled.span`
+export const SearchInfoSwitch = styled.a`
 	position: relative;
 	float: right;
 	font-size: 13px;
 	.iconfont {
 		position: absolute;	
-		top: 50%;
+		top: -5px;
 		left: -70%;
 		right: -100%;
-		transform: translateY(-50%);
+		// transform: translateY(-50%);
 		height: 30px;
+		transition: all .2s ease-in;
+		transform: rotate(0deg);
+		tarnsform-origin: center center;
 	}
 `;
 

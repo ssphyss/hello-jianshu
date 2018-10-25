@@ -44,7 +44,7 @@ class Header extends React.Component{
 
 		if (newList.length) {
 			for (let i = (page - 1) * 10; i < page * 10 && i < newList.length; i++) {
-				console.log('這是i',i,newList[i]);
+				// console.log('這是i',i,newList[i]);
 				pageList.push(
 					<SearchInfoItem key={newList[i]}>
 						{newList[i]}
@@ -61,9 +61,13 @@ class Header extends React.Component{
 						<SearchInfoTitle>熱門搜索</SearchInfoTitle>
 						<SearchInfoSwitch
 							// onClick = {this.props.handleChangePage}
-							onClick = {() => this.props.handleChangePage(page, totalPage)}
+							onClick = {() => this.props.handleChangePage(page, totalPage, this.iconfont)}
 						>	
-							<i className="iconfont">&#xe6dd;</i>							
+							<i 
+							// ref可以獲取js真實DOM的DOM節點
+							// 透過真實DOM節點去改變它的CSS樣式旋轉
+							ref={(icon)=>{this.iconfont = icon}}
+							className="iconfont">&#xe6dd;</i>						
 							換一批								
 						</SearchInfoSwitch>
 						<SearchInfoList>
@@ -175,14 +179,26 @@ const mapDispathToProps = (dispatch) => {
 		handleMouseLeave(){
 			dispatch(actionCreators.mouseLeave());
 		},
-		handleChangePage(page, totalPage){
+		handleChangePage(page, totalPage, icon){
 			console.log('totalPage', totalPage)
+			console.log('icon',icon);
+			// 原生js獲取css樣式的語法
+			console.log('icon',icon.style.transform);
+			// icon.style.transform = 'rotate(360deg)'
+			let originDeg = icon.style.transform.replace(/[^0-9]/ig, '')
+			if (originDeg) {
+				originDeg = parseInt(originDeg, 10);
+			}else {
+				originDeg = 0;
+			}
+			console.log('originDeg：', originDeg)
+			icon.style.transform = `rotate(${originDeg+360}deg)`;
+
 			if (page < totalPage) {
 				dispatch(actionCreators.changePage(page + 1));
 			}else {
 				dispatch(actionCreators.changePage(1));
-			}
-			
+			}			
 		}
 	}
 }
