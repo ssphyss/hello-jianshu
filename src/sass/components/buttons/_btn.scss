@@ -50,6 +50,9 @@
     //         margin-right: 0;
     //     }
     // }
+    &:hover {
+        color: #ec6149;
+    }
     &.disabled, &:disabled {
         opacity: 0.5;
         cursor: not-allowed;

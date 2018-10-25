@@ -4,7 +4,8 @@ import { fromJS } from 'immutable';
 // 把數據對象轉化成immutable對象
 const defaultState = fromJS({
 	focused: false,
-	list: []
+	list: [],
+	mouseIn: false
 })
 
 export default (state = defaultState, action) => {
@@ -16,6 +17,7 @@ export default (state = defaultState, action) => {
 		case constants.CHANGE_LIST :
 			return state.set('list', action.data);
 		case constants.MOUSE_ENTER :
+			console.log('顯示:')
 			return state.set('mouseIn', true);	
 		case constants.MOUSE_LEAVE :
 			return state.set('mouseIn', false);

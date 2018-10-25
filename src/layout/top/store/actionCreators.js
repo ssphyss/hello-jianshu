@@ -41,3 +41,10 @@ export const mouseEnter = () => ({
 export const mouseLeave = () => ({
     type: constants.MOUSE_LEAVE
 })
+
+// 可以接收到page的新頁碼 page,把page傳給reducer
+// 讓reducer接收到action時,也得到action.page
+export const changePage = (page) => ({
+    type: constants.CHANGE_PAGE,
+    page
+})

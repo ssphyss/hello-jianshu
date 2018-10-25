@@ -15,21 +15,42 @@ class Top extends React.Component{
 		// this.handleInputFocus = this.handleInputFocus.bind(this);
 		// this.handleInputBlur = this.handleInputBlur.bind(this);
 	// }
+
     getListArea () {
 		// const { focused, list, handleMouseEnter, handleMouseLeave } = this.props;
+        // if(this.props.focused || this.props.mouseIn){
+        // 在input內時,就顯示,不在時,東西還是要存在
+        //  (如果滑鼠在input內時 或 是在區域內時,東西就顯示)
+        // 點出了搜尋框區域外,才會false
+        // if(this.props.mouseIn===false){
+        //     console.log('pppp')
+        //     return <p>1232</p>
+        // }
         if(this.props.focused || this.props.mouseIn){
+        // if((this.props.focused===true && this.props.mouseIn)|| (this.props.focused===false && this.props.mouseIn) ){
+        // if(true){
+            console.log('ABC');
 			return (
                 <div 
-                onMouseEnter = { this.props.handleMouseEnter }
-                onMouseLeave = { this.props.handleMouseLeave }
-                className='search__info'
+                    onMouseEnter = { this.props.handleMouseEnter }
+                    onMouseLeave = { this.props.handleMouseLeave }
+                    className='search__info'
                 >
                     <div className='search__title-box clearfix'>
-                        <a className='search__text left' href='https://www.google.com.tw/'>熱門搜索</a>  
-                        <a className='search__text right' href='https://www.google.com.tw/'>
+                        <span className='search__text left'>熱門搜索</span>  
+                        <button 
+                            onClick = {(e)=>{
+                                console.log('案到了')
+                                e.preventDefault();
+                                this.handleChangeChange();
+                            }}                                
+                            // this.props.handleChangePage
+                            className='btn search__text right' 
+                            // href='https://www.google.com.tw/'
+                        >
                             <i className="iconfont">&#xe6dd;</i>
                             換一批
-                        </a>  
+                        </button>  
                     </div>                             
                     <ul>
                         {/* <li className='search__item'>
@@ -62,6 +83,9 @@ class Top extends React.Component{
 			return null;
 		}
 	}
+    handleChangeChange(){
+        console.log('點了下一批：handleChangePage');
+    }
     render(){
         return(
             <div className="top">
@@ -177,6 +201,8 @@ class Top extends React.Component{
 		// })
 	// }
 }
+
+
 // 把倉庫裡的focused( 即state.focused)映射到組件的props的focused
 const mapStateToProps = (state) => {
 	return {
@@ -186,23 +212,25 @@ const mapStateToProps = (state) => {
         // focused: state.top.get('focused')
         // focused: state.get('top').get('focused')
         focused: state.getIn(['top','focused']),
-        list: state.getIn(['top','list'])
+        list: state.getIn(['top','list']),
+        mouseIn: state.getIn(['top','mouseIn'])
 	}
 }
 
 const mapDispathToProps = (dispatch) => {
 	return {
 		handleInputFocus() {
-            console.log('123')
+            // console.log('123')
 			// const action = {
 			// 	type: 'search_focus'
 			// };
             // dispatch(action);
-            dispatch(actionCreators.getList());
             dispatch(actionCreators.searchFocus());
+            dispatch(actionCreators.getList());
+            
 		},
 		handleInputBlur() {
-            console.log('456')
+            // console.log('456')
 			// const action = {
 			// 	type: 'search_blur'
 			// };
@@ -216,7 +244,11 @@ const mapDispathToProps = (dispatch) => {
         handleMouseLeave(){
             console.log('handleMouseLeave');
             dispatch(actionCreators.mouseLeave());
-        }
+        },
+        // handleChangePage(){
+        //      console.log('點了下一批：handleChangePage');
+        //     // dispatch(actionCreators.changePage());
+        // }
 	}
 }
 // export default Top;
