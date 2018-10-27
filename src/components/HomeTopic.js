@@ -1,11 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import {
-    TopicWrapper,
-    TopicItem,
-    More
-} from './style'
+import { TopicWrapper, TopicItem, More } from './style';
 
 // import topic01 from './../assets/topic01.jpg';
 // import topic02 from './../assets/topic02.jpg';
@@ -16,6 +11,7 @@ import {
 
 class HomeTopic extends React.Component{
     render(){
+        // const { list } = this.props;
         return(
             <TopicWrapper>
                 {
@@ -89,22 +85,44 @@ class HomeTopic extends React.Component{
     }
 }
 
-const mapStateToProps = (state) => {
+const mapState = (state) => {
 	return {
         list: state.get('home').get('topicList')
 	}
 }
 
-const mapDispathToProps = (dispatch) => {
-	return {
-		handleInputFocus() {
-			console.log('123')
-			// dispatch(actionCreators.searchFocus());
-		},
-		handleInputBlur() {
-			console.log('456')
-			// dispatch(actionCreators.searchBlur());
-		}
-	}
-}
-export default connect(mapStateToProps, mapDispathToProps)(HomeTopic);
+// const mapDispath = (dispatch) => {
+// 	return {
+// 		handleInputFocus() {
+// 			console.log('123')
+// 			// dispatch(actionCreators.searchFocus());
+// 		},
+// 		handleInputBlur() {
+// 			console.log('456')
+// 			// dispatch(actionCreators.searchBlur());
+// 		}
+// 	}
+// }
+export default connect(mapState, null)(HomeTopic);
+
+
+
+// const mapStateToProps = (state) => {
+// 	return {
+//         list: state.get('home').get('topicList')
+// 	}
+// }
+
+// const mapDispathToProps = (dispatch) => {
+// 	return {
+// 		handleInputFocus() {
+// 			console.log('123')
+// 			// dispatch(actionCreators.searchFocus());
+// 		},
+// 		handleInputBlur() {
+// 			console.log('456')
+// 			// dispatch(actionCreators.searchBlur());
+// 		}
+// 	}
+// }
+// export default connect(mapStateToProps, mapDispathToProps)(HomeTopic);

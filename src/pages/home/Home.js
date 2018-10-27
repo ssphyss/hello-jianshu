@@ -5,7 +5,8 @@ import {
     HomeWrapper,
     HomeLeft,
     HomeRight
-} from './style'
+} from './style';
+
 import logoPic from '../../assets/banner.png';
 
 import HomeDownloadApp from './../../components/HomeDownloadApp';

@@ -3,11 +3,13 @@
 import { combineReducers } from  'redux-immutable';
 import { reducer as headerReducer } from './../layout/header1/store';
 import { reducer as topReducer } from './../layout/top/store';
+import { reducer as topStateReducer } from './../layout/topState/store';
 import { reducer as homeReducer } from './../pages/home/store';
 
 const reducer = combineReducers ({
 	header : headerReducer,
 	top : topReducer,
+	topState : topStateReducer,
 	home: homeReducer
 })
 export default reducer;
