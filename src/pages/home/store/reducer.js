@@ -10,9 +10,37 @@ import topic06 from './../../../assets/topic06.jpg';
 import list01 from './../../../assets/list/list01.jpg';
 import list02 from './../../../assets/list/list02.jpg';
 import list03 from './../../../assets/list/list03.jpg';
+import recommend01 from './../../../assets/recommend/recommend01.png';
+import recommend02 from './../../../assets/recommend/recommend02.png';
+import recommend03 from './../../../assets/recommend/recommend03.png';
+import recommend04 from './../../../assets/recommend/recommend04.png';
+import recommend05 from './../../../assets/recommend/recommend05.png';
+
 
 // 把數據對象轉化成immutable對象
 const defaultState = fromJS({
+	recommendList:[
+		{
+			id: 1,			
+			imgUrl: recommend01
+		},
+		{
+			id: 2,			
+			imgUrl: recommend02
+		},
+		{
+			id: 3,
+			imgUrl: recommend03
+		},
+		{
+			id: 4,
+			imgUrl: recommend04
+		},
+		{
+			id: 5,
+			imgUrl: recommend05
+		}
+	],
 	listArticle:[
 		{
 			id: 1,

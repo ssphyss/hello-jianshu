@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import Recommend01 from './../assets/recommend/recommend01.png';
+
 /**
  * HomeTopic
  */
@@ -84,4 +86,21 @@ export const ListMeta =styled.div`
 export const MetaItem =styled.span`
     display: inline-block;
     margin-right : 20px;
+`
+
+/**
+ * HomeRecommend
+ */
+
+export const HomeRecommendWrapper =styled.div`
+    margin : 30px 0;
+    width: 280px;
+`
+
+export const RecommendItem =styled.div`
+    width: 280px;
+    height: 50px;
+    // background: url(${Recommend01});
+    background: url(${(props) => props.imgUrl});
+    background-size: contain;
 `
