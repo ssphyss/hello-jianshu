@@ -1,7 +1,12 @@
 import * as constants from './constants';
-// import { CHANGE_HOME_DATA } from './actionTypes';
+import { fromJS } from 'immutable';  
+// 或 import { List } from 'immutable';
 import axios from 'axios';
 
+
+/**
+ * 異步
+ */
 // 方法2
 const changeHomeData = (result) => ({
     type: constants.CHANGE_HOME_DATA,
@@ -43,3 +48,23 @@ export const getHomeInfo = () => {
 // }
 
 
+/**
+ * getMoreList
+ */
+
+const addHomeData = (list) => ({
+    type: constants.ADD_HOME_DATA,
+    list: fromJS(list)   // 也可以寫成 list: List(list) 都會轉成immutable數組
+})
+export const getMoreList = () => {
+    return(dispatch) => {
+        console.log('AAABBB')
+        axios('./api/homeList.json').then((res)=>{
+            console.log(result)
+            const result = res.data.data;
+            // const action = addHomeData(result) 
+            // dispatch(action) 
+            dispatch(addHomeData(result))
+        })
+    }
+}

@@ -1,9 +1,10 @@
 import React from 'react';
 // 1.connect
 import { connect } from 'react-redux';
-import { ListItem, InfoBox, ListInfo, ListMeta, MetaItem } from './style';
-
+import { ListItem, InfoBox, ListInfo, ListMeta, MetaItem, LoadMore } from './style';
 // import list01 from './../assets/list/list01.jpg';
+// 6.
+import { actionCreators } from './../pages/home/store';
 
 class HomeList extends React.Component{
     render(){
@@ -11,9 +12,9 @@ class HomeList extends React.Component{
         return(
             <div>
                 {
-                    this.props.list.map((item)=>{
+                    this.props.list.map((item, index)=>{
                         return(
-                            <ListItem key={item.get('id')}>
+                            <ListItem key={/*item.get('id')*/ index}>                            
                                 <InfoBox>
                                     <img className='pic' src={item.get('imgUrl')} alt=""/>
                                     <ListInfo>
@@ -31,6 +32,11 @@ class HomeList extends React.Component{
                         )
                     })
                 }
+                <LoadMore
+                    // 5.
+                    onClick={this.props.getMoreList}
+                >閱讀更多
+                </LoadMore>
             </div>
             // <ListItem>
             //     <InfoBox>
@@ -63,5 +69,16 @@ const mapState = (state) => {
 	}
 }
 
+// 4.
+const mapDispath = (dispatch) => {
+	return {
+		getMoreList() {
+            console.log('123getMoreList')
+            // 7.
+            dispatch(actionCreators.getMoreList())
+		},
+	}
+}
+
 // 2.
-export default connect(mapState, null)(HomeList);
+export default connect(mapState, mapDispath)(HomeList);

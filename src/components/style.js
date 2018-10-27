@@ -88,6 +88,18 @@ export const MetaItem =styled.span`
     margin-right : 20px;
 `
 
+export const LoadMore =styled.a`
+    display: block;
+    margin: 30px 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #a5a5a5;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff
+`
+
 /**
  * HomeRecommend
  */

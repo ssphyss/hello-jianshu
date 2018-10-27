@@ -24,6 +24,8 @@ export default (state = defaultState, action) => {
 				recommendList:  fromJS(action.recommendList),
 				writerList:  fromJS(action.writerList),
 			})
+		case constants.ADD_HOME_DATA :
+			return state.set('listArticle', state.get('listArticle').concat(action.list))
 		default: 
 			return state;
 	}
