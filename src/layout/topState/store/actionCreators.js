@@ -10,10 +10,12 @@ const changeList = (data, totalItems ) => ({
     // 總共幾頁：總筆數有123筆/15=9頁 
     totalPage: Math.ceil(totalItems / 15)
 })
+
 // page只現在第幾頁
 // pageItems指一次要15筆
 // totalItems指共有123筆,可以去算總共有幾頁
 // totalPage指總共有9頁
+// page為0表示未給值時,給他代0,確保沒有值代入會走else
 export const getList = (page = 0, pageItems = 0) => {
     return (dispatch) => {
         console.log('新的page：',page);
@@ -27,7 +29,8 @@ export const getList = (page = 0, pageItems = 0) => {
         // axios.get('https://easy-mock.com/mock/5bc846bd4ff7d608864c06b0/jianshuApi/searchMenuPage')
         axios.get(url)
         .then((res)=>{           
-			console.log('Ajax輸出：',res.data);
+            console.log('Ajax輸出：',res.data);
+            console.log('Ajax的page：',page);
             const data = res.data;
             // const action = changeList(data.data);
             // dispatch(action);

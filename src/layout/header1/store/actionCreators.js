@@ -2,6 +2,9 @@ import * as constants from './constants';
 import { fromJS } from 'immutable';
 import axios from 'axios';
 
+// 2.然後會返回
+// 一個數據 data
+// 一個總頁碼 totalPage
 const changeList = (data) => ({
     type: constants.CHANGE_LIST,
     // data: data
@@ -10,6 +13,7 @@ const changeList = (data) => ({
     totalPage: Math.ceil(data.length / 10)
 })
 
+// 1.獲取數據
 export const getList = () => {
     return (dispatch) => {
         console.log('AAA');

@@ -11,7 +11,7 @@ import topic04 from './../assets/topic04.jpg';
 import topic05 from './../assets/topic05.jpg';
 import topic06 from './../assets/topic06.jpg';
 
-export default class Topic extends React.Component{
+export default class HomeTopic extends React.Component{
     render(){
         return(
             <TopicWrapper>

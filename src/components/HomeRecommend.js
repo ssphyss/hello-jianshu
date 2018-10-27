@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Recommend extends React.Component{
+export default class HomeRecommend extends React.Component{
     render(){
         return(
             <div>

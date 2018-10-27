@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default class Writer extends React.Component{
+export default class HomeDownloadApp extends React.Component{
     render(){
         return(
             <div>
-                Writer~
+                DownloadApp~
             </div>
         )
     }

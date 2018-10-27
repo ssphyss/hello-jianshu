@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default class DownloadApp extends React.Component{
+export default class HomeList extends React.Component{
     render(){
         return(
             <div>
-                DownloadApp~
+                List~
             </div>
         )
     }

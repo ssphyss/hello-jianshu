@@ -8,11 +8,11 @@ import {
 } from './style'
 import logoPic from '../../assets/banner.png';
 
-import DownloadApp from './../../components/DownloadApp';
-import List from './../../components/List';
-import Recommend from './../../components/Recommend';
-import Topic from './../../components/Topic';
-import Writer from './../../components/Writer';
+import HomeDownloadApp from './../../components/HomeDownloadApp';
+import HomeList from './../../components/HomeList';
+import HomeRecommend from './../../components/HomeRecommend';
+import HomeTopic from './../../components/HomeTopic';
+import HomeWriter from './../../components/HomeWriter';
 
 
 export default class Home extends React.Component{
@@ -21,13 +21,13 @@ export default class Home extends React.Component{
             <HomeWrapper>
                 <HomeLeft>
                     <img src={logoPic} alt=""/>
-                    <Topic>Topic</Topic>
-                    <List>List</List>
+                    <HomeTopic>Topic</HomeTopic>
+                    <HomeList>List</HomeList>
                 </HomeLeft>
                 <HomeRight>
-                    <Recommend>Recommend</Recommend>
-                    <DownloadApp>DownloadApp</DownloadApp>
-                    <Writer>Writer</Writer>
+                    <HomeRecommend>Recommend</HomeRecommend>
+                    <HomeDownloadApp>DownloadApp</HomeDownloadApp>
+                    <HomeWriter>Writer</HomeWriter>
                 </HomeRight>
             </HomeWrapper>
         )

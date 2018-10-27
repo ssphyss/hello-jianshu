@@ -6,6 +6,7 @@ import {
     TopicItem,
     More
 } from './style'
+
 // import topic01 from './../assets/topic01.jpg';
 // import topic02 from './../assets/topic02.jpg';
 // import topic03 from './../assets/topic03.jpg';
@@ -13,7 +14,7 @@ import {
 // import topic05 from './../assets/topic05.jpg';
 // import topic06 from './../assets/topic06.jpg';
 
-class Topic extends React.Component{
+class HomeTopic extends React.Component{
     render(){
         return(
             <TopicWrapper>
@@ -106,4 +107,4 @@ const mapDispathToProps = (dispatch) => {
 		}
 	}
 }
-export default connect(mapStateToProps, mapDispathToProps)(Topic);
+export default connect(mapStateToProps, mapDispathToProps)(HomeTopic);

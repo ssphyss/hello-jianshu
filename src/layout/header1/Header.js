@@ -24,16 +24,16 @@ class Header extends React.Component{
 		// const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
 		const { list, page, totalPage } = this.props;
 		const newList = list.toJS();  // 把Iimmutable數組轉成普通JS數組
-		const pageList = [];
+		const showList = [];
 
 		// newList = 47筆
-		// pageList = 10筆 要渲染的
+		// showList = 10筆 要渲染的
 
 		// if (newList.length){
 		// 	for (let i = (page - 1) * 10; i < page * 10; i++) {
 		// 		// console.log('這是i',i,newList[i]);
 		// 		if(typeof newList[i] != 'undefined'){
-		// 			pageList.push(
+		// 			showList.push(
 		// 				<SearchInfoItem key={newList[i]}>
 		// 					{newList[i]}
 		// 				</SearchInfoItem>	
@@ -41,11 +41,11 @@ class Header extends React.Component{
 		// 		}
 		// 	}
 		// }
-
+		// 如果有資料才會做循環
 		if (newList.length) {
 			for (let i = (page - 1) * 10; i < page * 10 && i < newList.length; i++) {
 				// console.log('這是i',i,newList[i]);
-				pageList.push(
+				showList.push(
 					<SearchInfoItem key={newList[i]}>
 						{newList[i]}
 					</SearchInfoItem>
@@ -80,7 +80,7 @@ class Header extends React.Component{
 									return <SearchInfoItem key={item}>{item}</SearchInfoItem>
 								})
 							} */}
-							{pageList}
+							{showList}
 						</SearchInfoList>
 					</SearchInfo>
 			)
