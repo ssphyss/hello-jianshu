@@ -1,18 +1,45 @@
 import * as constants from './constants';
-// import { 
-//     SEARCH_FOCUS,
-//     SEARCH_BLUR
-// } from './actionTypes';
+// import { CHANGE_HOME_DATA } from './actionTypes';
+import axios from 'axios';
 
-// 封裝action
-export const searchFocus = () => ({
-    // type: 'search_focus'
-    type: constants.SEARCH_FOCUS
+// 方法2
+const changeHomeData = (result) => ({
+    type: constants.CHANGE_HOME_DATA,
+    topicList: result.topicList,
+    listArticle: result.listArticle,
+    recommendList: result.recommendList,
+    writerList: result.writerList
 })
 
-export const searchBlur = () => ({
-    // type: 'search_blur'
-    type: constants.SEARCH_BLUR
-})
+export const getHomeInfo = () => {
+    return(dispatch) => {
+        axios('./api/home.json').then((res)=>{
+            console.log(res)
+            const result = res.data.data;
+            // const action = changeHomeData(result) 
+            // dispatch(action) 
+            dispatch(changeHomeData(result))
+        })
+    }
+}
+
+// 方法1
+// export const getHomeInfo = () => {
+//     return(dispatch) => {
+//         axios('./api/home.json').then((res)=>{
+//             console.log(res)
+//             const result = res.data.data;
+//             const action = {
+//                 type: 'change_home_data',
+//                 topicList: result.topicList,
+//                 listArticle: result.listArticle,
+//                 recommendList: result.recommendList,
+//                 writerList: result.writerList
+//             }
+//             // 11.
+//             dispatch(action)
+//         })
+//     }
+// }
 
 
