@@ -104,3 +104,27 @@ export const RecommendItem =styled.div`
     background: url(${(props) => props.imgUrl});
     background-size: contain;
 `
+
+/**
+ * HomeWriter
+ */
+
+export const HomeWriterWrapper =styled.div`
+    margin : 30px 0;
+    width: 280px;
+`
+export const SearchInfoList =styled.div`
+
+`
+export const SearchInfoSwitch =styled.div`
+
+`
+export const SearchInfo =styled.div`
+
+`
+export const SearchInfoTitle =styled.div`
+
+`
+export const SearchInfoItem =styled.div`
+
+`
