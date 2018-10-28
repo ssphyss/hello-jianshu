@@ -52,19 +52,34 @@ export const getHomeInfo = () => {
  * getMoreList
  */
 
-const addHomeData = (list) => ({
+const addHomeData = (list, nextPage) => ({
     type: constants.ADD_HOME_DATA,
-    list: fromJS(list)   // 也可以寫成 list: List(list) 都會轉成immutable數組
+    list: fromJS(list),   // 也可以寫成 list: List(list) 都會轉成immutable數組
+    nextPage
 })
-export const getMoreList = () => {
+// export const getMoreList = () => {
+//     return(dispatch) => {
+//         console.log('AAABBB')
+//         axios('./api/homeList.json').then((res)=>{
+//             console.log(result)
+//             const result = res.data.data;
+//             // const action = addHomeData(result) 
+//             // dispatch(action) 
+//             dispatch(addHomeData(result))
+//         })
+//     }
+// }
+
+// 有帶頁碼
+export const getMoreList = (page) => {
     return(dispatch) => {
         console.log('AAABBB')
-        axios('./api/homeList.json').then((res)=>{
+        axios('./api/homeList.json?page' + page).then((res)=>{
             console.log(result)
             const result = res.data.data;
             // const action = addHomeData(result) 
             // dispatch(action) 
-            dispatch(addHomeData(result))
+            dispatch(addHomeData(result, page + 1))
         })
     }
 }

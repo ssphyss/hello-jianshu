@@ -8,7 +8,7 @@ import { actionCreators } from './../pages/home/store';
 
 class HomeList extends React.Component{
     render(){
-        // const { list } = this.props;
+        // const { list, page } = this.props;
         return(
             <div>
                 {
@@ -34,7 +34,9 @@ class HomeList extends React.Component{
                 }
                 <LoadMore
                     // 5.
-                    onClick={this.props.getMoreList}
+                    // onClick={this.props.getMoreList}
+                    // 9.
+                    onClick={() => this.props.getMoreList(this.props.page)}
                 >閱讀更多
                 </LoadMore>
             </div>
@@ -65,17 +67,19 @@ class HomeList extends React.Component{
 const mapState = (state) => {
 	return {
         // list: state.get('home').get('listArticle')
-        list: state.getIn(['home','listArticle'])
+        list: state.getIn(['home', 'listArticle']),
+        // 8
+        page: state.getIn(['home', 'listArticlePage'])
 	}
 }
 
 // 4.
 const mapDispath = (dispatch) => {
 	return {
-		getMoreList() {
+		getMoreList(page) {
             console.log('123getMoreList')
             // 7.
-            dispatch(actionCreators.getMoreList())
+            dispatch(actionCreators.getMoreList(page))
 		},
 	}
 }
