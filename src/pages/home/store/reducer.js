@@ -11,27 +11,30 @@ const defaultState = fromJS({
 	showScroll: false
 });
 
+const changeHomeData = (state, action) => {
+	console.log('action：', action)
+	return state.merge({
+		topicList:  fromJS(action.topicList),
+		listArticle:  fromJS(action.listArticle),
+		recommendList:  fromJS(action.recommendList),
+		writerList:  fromJS(action.writerList),
+	});
+}
+
+const addHomeData = (state, action) => {
+	console.log('action：', action)	
+	return state.merge({
+		listArticle:  state.get('listArticle').concat(action.list),
+		listArticlePage: action.nextPage
+	});
+}
+
 export default (state = defaultState, action) => {
 	switch (action.type) {
-		// 'change_home_data'
 		case constants.CHANGE_HOME_DATA :
-			console.log('action：', action)
-			// state.set('topList', fromJS(action.topicList))
-			// state.set('topList', fromJS(action.listArticle))
-			// state.set('topList', fromJS(action.recommendList))
-			// state.set('topList', fromJS(action.writerList))
-			return state.merge({
-				topicList:  fromJS(action.topicList),
-				listArticle:  fromJS(action.listArticle),
-				recommendList:  fromJS(action.recommendList),
-				writerList:  fromJS(action.writerList),
-			});
+			return changeHomeData(state, action);
 		case constants.ADD_HOME_DATA :
-			// return state.set('listArticle', state.get('listArticle').concat(action.list))
-			return state.merge({
-				listArticle:  state.get('listArticle').concat(action.list),
-				listArticlePage: action.nextPage
-			});
+			return addHomeData(state, action);
 		case constants.TOGGLE_SCROLL_TOP :
 			return state.set('showScroll', action.show);
 		default: 
