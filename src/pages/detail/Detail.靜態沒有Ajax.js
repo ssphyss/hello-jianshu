@@ -8,8 +8,6 @@ import {
     DetailContent
 } from './style';
 import { connect } from 'react-redux';
-// 3.
-import { actionCreators } from './store';
 
 class Detail extends React.Component{
     render(){
@@ -42,10 +40,6 @@ class Detail extends React.Component{
             </DetailWrapper>
         )
     }
-    // 1.
-    componentDidMount(){
-        this.props.getDetail();   
-    }
 }
 
 const mapState = (state) => ({
@@ -54,10 +48,9 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-    // 2.
-    getDetail(){
-        const action = actionCreators.getDetail();
-        dispatch(action);       
+    changeHomeData(){
+        // const action = actionCreators.getHomeInfo();
+        // dispatch(action);       
     }
 })
 
