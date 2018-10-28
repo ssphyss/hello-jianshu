@@ -11,10 +11,11 @@ import { connect } from 'react-redux';
 // 3.
 import { actionCreators } from './store';
 
-class Detail extends React.Component{
+class Detail extends React.Component{    
     render(){
         console.log('123');
-        console.log(this.props.title);
+        console.log('詳情頁標題：', this.props.title);
+        console.log('詳情頁編號：', this.props.match.params.id);
         return(
             <DetailWrapper>
                 <DetailLeft>
@@ -44,7 +45,7 @@ class Detail extends React.Component{
     }
     // 1.
     componentDidMount(){
-        this.props.getDetail();   
+        this.props.getDetail(this.props.match.params.id);   
     }
 }
 
@@ -55,8 +56,8 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
     // 2.
-    getDetail(){
-        const action = actionCreators.getDetail();
+    getDetail(id){
+        const action = actionCreators.getDetail(id);
         dispatch(action);       
     }
 })

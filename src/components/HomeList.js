@@ -15,7 +15,7 @@ class HomeList extends React.Component{
                 {
                     this.props.list.map((item, index)=>{
                         return(
-                            <Link key={/*item.get('id')*/ index} to='./detail'>                            
+                            <Link key={index} to={'./detail/' + item.get('id')}  /* key={item.get('id')} to='./detail'*/ >                            
                                 <ListItem>                            
                                     <InfoBox>
                                         <img className='pic' src={item.get('imgUrl')} alt=""/>
