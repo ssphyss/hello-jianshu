@@ -2,6 +2,8 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+// 引入login的store做login功能
+import { actionCreators as loginActionCreators } from './../../pages/login/store';
 import { Link } from 'react-router-dom';
 
 import {
@@ -108,7 +110,11 @@ class Header extends React.Component{
 					</NavItem>
 					{
 						this.props.login ? 
-						<NavItem className='right'>退出</NavItem> :
+						<NavItem 
+							onClick={this.props.logout}
+							className='right'>
+							退出
+						</NavItem> :
 						<Link to='/login'><NavItem className='right'>登陸</NavItem></Link>
 					}
 					
@@ -219,6 +225,9 @@ const mapDispathToProps = (dispatch) => {
 			}else {
 				dispatch(actionCreators.changePage(1));
 			}			
+		},
+		logout(){
+			dispatch(loginActionCreators.logout());
 		}
 	}
 }
