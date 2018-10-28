@@ -5,7 +5,8 @@ import Header from './layout/header1/Header';
 import Top from './layout/top/Top';
 import TopState from './layout/topState/TopState';
 import Home from './pages/home/Home';
-import Detail from './pages/detail/Detail';
+// import Detail from './pages/detail/Detail';
+import Detail from './pages/detail/loadable.js';
 import Login from './pages/login/Login';
 import Writer from './pages/writer/Writer'
 import store from './store'
