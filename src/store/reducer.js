@@ -5,12 +5,14 @@ import { reducer as headerReducer } from './../layout/header1/store';
 import { reducer as topReducer } from './../layout/top/store';
 import { reducer as topStateReducer } from './../layout/topState/store';
 import { reducer as homeReducer } from './../pages/home/store';
+import { reducer as detailReducer } from './../pages/detail/store';
 
 const reducer = combineReducers ({
 	header : headerReducer,
 	top : topReducer,
 	topState : topStateReducer,
-	home: homeReducer
+	home: homeReducer,
+	detail: detailReducer
 })
 export default reducer;
 

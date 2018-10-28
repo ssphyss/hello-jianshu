@@ -1,21 +1,24 @@
 import React from 'react';
 import { 
     DetailWrapper, 
-    BackTop,
-    __Left,
-    __Right,
-    __Header,
-    __Content
+    // BackTop,
+    DetailLeft,
+    DetailRight,
+    DetailHeader,
+    DetailContent
 } from './style';
+import { connect } from 'react-redux';
 
-export default class Detail extends React.Component{
+class Detail extends React.Component{
     render(){
+        console.log('123');
+        console.log(this.props.title);
         return(
             <DetailWrapper>
-                <__Left>
-                    <__Header>“寂静”的宇宙</__Header>
-                    <__Content>
-                        <img src='http://upload-images.jianshu.io/upload_images/12961714-3318dd46510b0806.jpg'/>
+                <DetailLeft>
+                    {/* <DetailHeader>“寂静”的宇宙</DetailHeader> */}
+                    {/* <DetailContent>
+                        <img src='http://upload-images.jianshu.io/upload_images/12961714-3318dd46510b0806.jpg' alt=''/>
                         <p>
                             曾幾何時啊，我們每個人都想過我們的世界究竟在哪，
                             地球之外又是什麼，我們究竟又是怎樣地存在。
@@ -24,13 +27,31 @@ export default class Detail extends React.Component{
                             例如三星系統，四星系統，五星系統，六星系統……當然也有更為壯麗的運行系統，
                             你可以將它想像成如同三體中的那樣……
                         </p>
-                    </__Content>    
-                </__Left>
-                <__Right>
-                    <img src='http://cdn2.jianshu.io/assets/web/web-note-ad-side-banner-22096669b4c4b91c3b9266894e951aef.png'/>
-                </__Right>
-                            
+                    </DetailContent>   */}
+                    <DetailHeader>{this.props.title}</DetailHeader>
+                    <DetailContent
+                        dangerouslySetInnerHTML={{__html: this.props.content}}
+                    >                        
+                    </DetailContent>    
+                </DetailLeft>
+                <DetailRight>
+                    <img src='http://cdn2.jianshu.io/assets/web/web-note-ad-side-banner-22096669b4c4b91c3b9266894e951aef.png' alt=''/>
+                </DetailRight>                            
             </DetailWrapper>
         )
     }
 }
+
+const mapState = (state) => ({
+    title: state.getIn(['detail','title']),
+    content: state.getIn(['detail','content']),
+})
+
+const mapDispatch = (dispatch) => ({
+    changeHomeData(){
+        // const action = actionCreators.getHomeInfo();
+        // dispatch(action);       
+    }
+})
+
+export default connect(mapState, mapDispatch)(Detail);

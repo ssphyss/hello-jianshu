@@ -21,7 +21,7 @@ export const DetailWrapper = styled.div`
     // background: yellow;
 `;
 
-export const __Left = styled.div`
+export const DetailLeft = styled.div`
     float: left;
     margin-left: 15px;
     padding-top: 30px;
@@ -32,13 +32,13 @@ export const __Left = styled.div`
     }
 `;
 
-export const __Right = styled.div`
+export const DetailRight = styled.div`
     float: right;
     width: 240px;
     padding-top: 30px;
 `;
 
-export const __Header = styled.div`
+export const DetailHeader = styled.div`
     margin: 20px 0 20px 0;
     font-size: 34px;
     font-weight: bold;
@@ -47,7 +47,7 @@ export const __Header = styled.div`
 `;
 
 
-export const __Content = styled.div`
+export const DetailContent = styled.div`
     margin: 50px 0 20px 0;
     font-size: 16px;
     line-height: 30px;

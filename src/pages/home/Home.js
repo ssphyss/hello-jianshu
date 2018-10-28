@@ -55,6 +55,7 @@ class Home extends PureComponent {
         window.addEventListener('scroll', this.props.changeScrollTopShow);
     }
 }
+
 const mapStateToProps = (state) => {
 	return {
 		showScroll: state.getIn(['home','showScroll']),
