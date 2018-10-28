@@ -7,7 +7,8 @@ const defaultState = fromJS({
 	listArticle:[],
 	listArticlePage: 1,
 	recommendList:[],
-	writerList: []
+	writerList: [],
+	showScroll: false
 });
 
 export default (state = defaultState, action) => {
@@ -24,13 +25,15 @@ export default (state = defaultState, action) => {
 				listArticle:  fromJS(action.listArticle),
 				recommendList:  fromJS(action.recommendList),
 				writerList:  fromJS(action.writerList),
-			})
+			});
 		case constants.ADD_HOME_DATA :
 			// return state.set('listArticle', state.get('listArticle').concat(action.list))
 			return state.merge({
 				listArticle:  state.get('listArticle').concat(action.list),
 				listArticlePage: action.nextPage
-			})
+			});
+		case constants.TOGGLE_SCROLL_TOP :
+			return state.set('showScroll', action.show);
 		default: 
 			return state;
 	}

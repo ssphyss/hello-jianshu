@@ -75,7 +75,7 @@ export const getMoreList = (page) => {
     return(dispatch) => {
         console.log('AAABBB')
         axios('./api/homeList.json?page' + page).then((res)=>{
-            console.log(result)
+            console.log(res);
             const result = res.data.data;
             // const action = addHomeData(result) 
             // dispatch(action) 
@@ -83,3 +83,12 @@ export const getMoreList = (page) => {
         })
     }
 }
+
+/**
+ * 
+ */
+
+export const toggleTopShow = (show) => ({
+    type: constants.TOGGLE_SCROLL_TOP,
+    show
+})

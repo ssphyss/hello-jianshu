@@ -1,5 +1,19 @@
 import styled from 'styled-components';
 
+/**
+ * Home
+ */
+
+export const BackTop = styled.a`
+    position: fixed;
+    right: 81px;
+    bottom: 100px;
+    padding: 11px 14px;
+    border: 1px solid #9E9E9E;
+    transform: rotate(-90deg);
+    color: #9E9E9E;
+`;
+
 export const HomeWrapper = styled.div`
     overflow: hidden;
     width: 960px;

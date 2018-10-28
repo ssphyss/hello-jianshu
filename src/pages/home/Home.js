@@ -1,24 +1,20 @@
 import React from 'react';
-// 4.
 import { connect } from 'react-redux';
-// import './style.js';
-import { HomeWrapper, HomeLeft, HomeRight } from './style';
-// 1.
-// import axios from 'axios';
-// 13.
+import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
 import { actionCreators } from './store';
-
-
 import logoPic from '../../assets/banner.png';
-
 import HomeDownloadApp from './../../components/HomeDownloadApp';
 import HomeList from './../../components/HomeList';
 import HomeRecommend from './../../components/HomeRecommend';
 import HomeTopic from './../../components/HomeTopic';
 import HomeWriter from './../../components/HomeWriter';
 
-
 class Home extends React.Component{
+
+    handleScrollTop(){
+        window.scrollTo(0, 0)
+    }
+
     render(){
         return(
             <HomeWrapper>
@@ -32,58 +28,52 @@ class Home extends React.Component{
                     <HomeDownloadApp>DownloadApp</HomeDownloadApp>
                     <HomeWriter>Writer</HomeWriter>
                 </HomeRight>
+                {
+                    this.props.showScroll ? (
+                        <BackTop
+                            onClick={this.handleScrollTop}
+                        >   Top
+
+                            <i className="iconfont">&#xe6f5;</i>
+                        </BackTop>
+                    )                   
+                    :null
+                }
+                
             </HomeWrapper>
         )
     }
 
-    // 2.
     componentDidMount(){
-        // 9.
-        this.props.changeHomeData();
-        // 搬到下面
-        // axios('./api/home.json').then((res)=>{
-        //     console.log(res)
-        //     const result = res.data.data;
-
-        //     // 3.要改變數據時定義 action
-        //     const action = {
-        //         type: 'change_home_data',
-        //         topicList: result.topicList,
-        //         listArticle: result.listArticle,
-        //         recommendList: result.recommendList,
-        //         writerList: result.writerList
-        //     }
-        //     // 7.
-        //     this.props.changeHomeData(action)
-        // })
+        this.props.changeHomeData();   
+        this.bindEvents();   
+    }
+    componentWillUnMount(){
+        window.removeEventListener('scroll', this.props.changeScrollTopShow);
+    }
+    bindEvents(){
+        window.addEventListener('scroll', this.props.changeScrollTopShow);
     }
 }
+const mapStateToProps = (state) => {
+	return {
+		showScroll: state.getIn(['home','showScroll']),
+	}
+}
 
-// 6.
 const mapDispatch = (dispatch) => ({
-    // 10
     changeHomeData(){
-        // 14
         const action = actionCreators.getHomeInfo();
-        dispatch(action);  
-        //action是一個函數,因為getHomeInfo()返回是一個函數
-
-        // 12.移到actionCreators
-        // axios('./api/home.json').then((res) => {
-        //     console.log(res)
-        //     const result = res.data.data;
-        //     const action = {
-        //         type: 'change_home_data',
-        //         topicList: result.topicList,
-        //         listArticle: result.listArticle,
-        //         recommendList: result.recommendList,
-        //         writerList: result.writerList
-        //     }
-        //     // 11.
-        //     dispatch(action)
-        // })
+        dispatch(action);       
+    },
+    changeScrollTopShow(){
+        console.log(document.documentElement.scrollTop);
+        if (document.documentElement.scrollTop > 400){
+            dispatch(actionCreators.toggleTopShow(true)); 
+        }else {
+            dispatch(actionCreators.toggleTopShow(false)); 
+        }
     }
 })
 
-// 5.
-export default connect(null, mapDispatch)(Home);
+export default connect(mapStateToProps, mapDispatch)(Home);
