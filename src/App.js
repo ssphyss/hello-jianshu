@@ -6,6 +6,7 @@ import Top from './layout/top/Top';
 import TopState from './layout/topState/TopState';
 import Home from './pages/home/Home';
 import Detail from './pages/detail/Detail';
+import Login from './pages/login/Login'
 import store from './store'
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
               {/* <Route path='/' exact render={ () => <div>home</div> }></Route>   
               <Route path='/detail' exact render={ () => <div>detail</div> }></Route> */}
               <Route path='/' exact component={Home}></Route>   
+              <Route path='/login' exact  component={Login}></Route>
               {/* path='/detail' */}
               <Route path='/detail/:id' exact  component={Detail}></Route>
             </div>            

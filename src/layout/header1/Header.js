@@ -106,7 +106,12 @@ class Header extends React.Component{
 						<i className="iconfont">&#xe62a;</i>
 						下載App
 					</NavItem>
-					<NavItem className='right'>登陸</NavItem>
+					{
+						this.props.login ? 
+						<NavItem className='right'>退出</NavItem> :
+						<Link to='/login'><NavItem className='right'>登陸</NavItem></Link>
+					}
+					
 					<NavItem className='right'>
 						<i className="iconfont">&#xe636;</i>
 					</NavItem>
@@ -156,7 +161,9 @@ const mapStateToProps = (state) => {
 		list: state.getIn(['header','list']),
 		page: state.getIn(['header','page']),
 		totalPage: state.getIn(['header','totalPage']),
-		mouseIn: state.getIn(['header','mouseIn'])
+		mouseIn: state.getIn(['header','mouseIn']),
+		// 從login取值
+		login: state.getIn(['login','login'])
 	}
 }
 

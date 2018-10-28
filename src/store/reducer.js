@@ -6,13 +6,15 @@ import { reducer as topReducer } from './../layout/top/store';
 import { reducer as topStateReducer } from './../layout/topState/store';
 import { reducer as homeReducer } from './../pages/home/store';
 import { reducer as detailReducer } from './../pages/detail/store';
+import { reducer as loginReducer } from './../pages/login/store';
 
 const reducer = combineReducers ({
 	header : headerReducer,
 	top : topReducer,
 	topState : topStateReducer,
 	home: homeReducer,
-	detail: detailReducer
+	detail: detailReducer,
+	login: loginReducer
 })
 export default reducer;
 
