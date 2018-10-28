@@ -15,7 +15,10 @@ class HomeList extends React.Component{
                 {
                     this.props.list.map((item, index)=>{
                         return(
-                            <Link key={index} to={'./detail/' + item.get('id')}  /* key={item.get('id')} to='./detail'*/ >                            
+                            /** to={'./detail/' + item.get('id')}  或  key={item.get('id')} to='./detail' */
+                            /** to={`/detail/${item.get('id')}`}  搭配路由 path='/detail/:id' */ 
+                            /** to={`/detail?id=${item.get('id')}`} 搭配路由 path='/detail' */
+                            <Link key={index} to={`/detail/${item.get('id')}`} >                            
                                 <ListItem>                            
                                     <InfoBox>
                                         <img className='pic' src={item.get('imgUrl')} alt=""/>
