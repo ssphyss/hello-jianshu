@@ -5,6 +5,7 @@ import { ListItem, InfoBox, ListInfo, ListMeta, MetaItem, LoadMore } from './sty
 // import list01 from './../assets/list/list01.jpg';
 // 6.
 import { actionCreators } from './../pages/home/store';
+import { Link } from 'react-router-dom';
 
 class HomeList extends React.Component{
     render(){
@@ -14,21 +15,24 @@ class HomeList extends React.Component{
                 {
                     this.props.list.map((item, index)=>{
                         return(
-                            <ListItem key={/*item.get('id')*/ index}>                            
-                                <InfoBox>
-                                    <img className='pic' src={item.get('imgUrl')} alt=""/>
-                                    <ListInfo>
-                                        <a className='title' href='https://www.google.com.tw/'>{item.get('title')}</a>
-                                        <p className='desc'>{item.get('desc')}
-                                        </p>
-                                    </ListInfo>
-                                </InfoBox>                
-                                <ListMeta>
-                                    <MetaItem>grain先森</MetaItem>
-                                    <MetaItem>回應123</MetaItem>
-                                    <MetaItem>喜愛456</MetaItem>
-                                </ListMeta>
-                            </ListItem>
+                            <Link key={/*item.get('id')*/ index} to='./detail'>                            
+                                <ListItem>                            
+                                    <InfoBox>
+                                        <img className='pic' src={item.get('imgUrl')} alt=""/>
+                                        <ListInfo>
+                                            <h3 className='title' >{item.get('title')}</h3>  
+                                            {/* <a className='title' href='https://www.google.com.tw/'>{item.get('title')}</a> */}
+                                            <p className='desc'>{item.get('desc')}
+                                            </p>
+                                        </ListInfo>
+                                    </InfoBox>                
+                                    <ListMeta>
+                                        <MetaItem>grain先森</MetaItem>
+                                        <MetaItem>回應123</MetaItem>
+                                        <MetaItem>喜愛456</MetaItem>
+                                    </ListMeta>
+                                </ListItem>
+                            </Link>
                         )
                     })
                 }

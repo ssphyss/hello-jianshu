@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
-export default class HomeDownloadApp extends React.Component{
+export default class HomeDownloadApp extends PureComponent {
     render(){
         return(
             <div>

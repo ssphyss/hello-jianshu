@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 // 1.connect
 import { connect } from 'react-redux';
 import { 
@@ -11,7 +11,7 @@ import {
     SearchInfoItem 
 } from './style';
 
-class HomeWriter extends React.Component{
+class HomeWriter extends PureComponent {
     render(){
         return(
             <HomeWriterWrapper>

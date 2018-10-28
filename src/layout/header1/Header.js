@@ -2,6 +2,7 @@ import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+import { Link } from 'react-router-dom';
 
 import {
     HeaderWrapper,
@@ -93,7 +94,9 @@ class Header extends React.Component{
 		const { list } = this.props;
         return(
             <HeaderWrapper>
-                <Logo />
+				<Link to='/'>
+					<Logo /> 
+				</Link>                
                 <Nav>
 					<NavItem className='left active'>
 						<i className="iconfont">&#xe71b;</i>

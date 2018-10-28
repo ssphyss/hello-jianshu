@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { TopicWrapper, TopicItem, More } from './style';
 
@@ -9,7 +9,7 @@ import { TopicWrapper, TopicItem, More } from './style';
 // import topic05 from './../assets/topic05.jpg';
 // import topic06 from './../assets/topic06.jpg';
 
-class HomeTopic extends React.Component{
+class HomeTopic extends PureComponent {
     render(){
         // const { list } = this.props;
         return(
